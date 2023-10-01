@@ -16,6 +16,10 @@ public class SuccessFrame extends javax.swing.JFrame {
     public SuccessFrame() {
         initComponents();
     }
+    
+    public SuccessFrame(String firstName, String lastName, String age, String email, String message) {
+        initComponents();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,27 +30,106 @@ public class SuccessFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        mainFrame = new javax.swing.JPanel();
+        titleLabel = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
+        firstNameValue = new javax.swing.JLabel();
+        lastNameValue = new javax.swing.JLabel();
+        ageLabel = new javax.swing.JLabel();
+        ageValue = new javax.swing.JLabel();
+        emailLabel = new javax.swing.JLabel();
+        emailValue = new javax.swing.JLabel();
+        messageLabel = new javax.swing.JLabel();
+        messageValue = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(700, 550));
 
-        jLabel1.setText("Mashallha Success brother");
+        mainFrame.setBackground(new java.awt.Color(253, 206, 68));
+
+        titleLabel.setFont(new java.awt.Font("Malayalam MN", 1, 24)); // NOI18N
+        titleLabel.setText("Registration Successful!");
+
+        nameLabel.setText("Name:");
+
+        firstNameValue.setText("jLabel1");
+
+        lastNameValue.setText("jLabel1");
+
+        ageLabel.setText("Age:");
+
+        ageValue.setText("jLabel2");
+
+        emailLabel.setText("Email:");
+
+        emailValue.setText("jLabel2");
+
+        messageLabel.setText("Message:");
+
+        messageValue.setText("jLabel2");
+
+        javax.swing.GroupLayout mainFrameLayout = new javax.swing.GroupLayout(mainFrame);
+        mainFrame.setLayout(mainFrameLayout);
+        mainFrameLayout.setHorizontalGroup(
+            mainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainFrameLayout.createSequentialGroup()
+                .addGap(201, 201, 201)
+                .addGroup(mainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(titleLabel)
+                    .addGroup(mainFrameLayout.createSequentialGroup()
+                        .addGroup(mainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nameLabel)
+                            .addComponent(ageLabel)
+                            .addComponent(emailLabel)
+                            .addComponent(messageLabel))
+                        .addGap(25, 25, 25)
+                        .addGroup(mainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(messageValue)
+                            .addComponent(emailValue)
+                            .addComponent(ageValue)
+                            .addGroup(mainFrameLayout.createSequentialGroup()
+                                .addComponent(firstNameValue)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lastNameValue)))))
+                .addContainerGap(220, Short.MAX_VALUE))
+        );
+        mainFrameLayout.setVerticalGroup(
+            mainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainFrameLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(titleLabel)
+                .addGap(26, 26, 26)
+                .addGroup(mainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainFrameLayout.createSequentialGroup()
+                        .addComponent(nameLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ageLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(emailLabel))
+                    .addGroup(mainFrameLayout.createSequentialGroup()
+                        .addGroup(mainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(firstNameValue)
+                            .addComponent(lastNameValue))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ageValue)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(emailValue)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(mainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(messageLabel)
+                    .addComponent(messageValue))
+                .addContainerGap(358, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(82, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(160, 160, 160))
+            .addComponent(mainFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addComponent(jLabel1)
-                .addContainerGap(182, Short.MAX_VALUE))
+            .addComponent(mainFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -87,8 +170,27 @@ public class SuccessFrame extends javax.swing.JFrame {
         });
     }
     
+    
+    
+    public void setLabelValues(String firstName, String lastName, String age, String email, String message) {
+        ageValue.setText(age);
+        firstNameValue.setText(firstName);
+        lastNameValue.setText(lastName); 
+        emailValue.setText(email);
+        messageValue.setText(message);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel ageLabel;
+    private javax.swing.JLabel ageValue;
+    private javax.swing.JLabel emailLabel;
+    private javax.swing.JLabel emailValue;
+    private javax.swing.JLabel firstNameValue;
+    private javax.swing.JLabel lastNameValue;
+    private javax.swing.JPanel mainFrame;
+    private javax.swing.JLabel messageLabel;
+    private javax.swing.JLabel messageValue;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }

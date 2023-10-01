@@ -191,6 +191,7 @@ public class MainFrame extends javax.swing.JFrame {
 //            this.add(successPannel);       
 //             JOptionPane.showMessageDialog(this, firstName + " " + lastName + " " + age + " " + email + " " + message, "Registeration Form", HEIGHT);
             SuccessFrame f = new SuccessFrame(); 
+            f.setLabelValues(firstName, lastName, age, email, message);
             this.setVisible(false);
             f.setVisible(true);
         }
