@@ -213,12 +213,10 @@ public class MainFrame extends javax.swing.JFrame {
         String email = emailInput.getText();
         String message = messageInput.getText();
         
-        Pattern pattern = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
-        Matcher isValidEmail = pattern.matcher(email);
-        
-        try {
-           img=ImageIO.read(file);
-           ImageIcon icon = new ImageIcon(img); // ADDED
+       
+
+            Pattern pattern = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
+            Matcher isValidEmail = pattern.matcher(email);
            
            
            if(firstName.length() == 0) {
@@ -231,23 +229,25 @@ public class MainFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please enter a valid Email", "Validation Error", HEIGHT);
         } else if (message.length() == 0) {
             JOptionPane.showMessageDialog(this, "Message Should not empty", "Validation Error", HEIGHT);
+        } else if (file == null ){
+         JOptionPane.showMessageDialog(this, "Please select the profile image", "Validation Error", HEIGHT);
         } else {
-//            JPanel successPannel = new JPanel();
-//            successPannel.setBounds(0, 0, 700, 550);
-//            mainPanel.setVisible(false);
-//            successPannel.add(new JLabel("Success"));
-//            this.add(successPannel);       
-//             JOptionPane.showMessageDialog(this, firstName + " " + lastName + " " + age + " " + email + " " + message, "Registeration Form", HEIGHT);
+            
+            
+            
+            
+            try {
+            img=ImageIO.read(file);
+            ImageIcon icon = new ImageIcon(img); // ADDED
             SuccessFrame f = new SuccessFrame(); 
             f.setLabelValues(firstName, lastName, age, email, message, icon);
             this.setVisible(false);
             f.setVisible(true);
+            }  catch(IOException e2){}
             
         }
                         
-        }
-        catch(IOException e1) {
-        }
+       
         
         
         
