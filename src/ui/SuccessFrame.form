@@ -56,9 +56,11 @@
                               <Component id="ageLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="emailLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="messageLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="messageLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="imageValue" min="-2" max="-2" attributes="0"/>
                               <Component id="messageValue" min="-2" max="-2" attributes="0"/>
                               <Component id="emailValue" min="-2" max="-2" attributes="0"/>
                               <Component id="ageValue" min="-2" max="-2" attributes="0"/>
@@ -104,7 +106,12 @@
                       <Component id="messageLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="messageValue" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="358" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="messageLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="imageValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="329" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -162,6 +169,13 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel2"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="messageLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Image:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="imageValue">
         </Component>
       </SubComponents>
     </Container>

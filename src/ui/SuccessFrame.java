@@ -4,6 +4,8 @@
  */
 package ui;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author vikas
@@ -41,6 +43,8 @@ public class SuccessFrame extends javax.swing.JFrame {
         emailValue = new javax.swing.JLabel();
         messageLabel = new javax.swing.JLabel();
         messageValue = new javax.swing.JLabel();
+        messageLabel1 = new javax.swing.JLabel();
+        imageValue = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(700, 550));
@@ -68,6 +72,8 @@ public class SuccessFrame extends javax.swing.JFrame {
 
         messageValue.setText("jLabel2");
 
+        messageLabel1.setText("Image:");
+
         javax.swing.GroupLayout mainFrameLayout = new javax.swing.GroupLayout(mainFrame);
         mainFrame.setLayout(mainFrameLayout);
         mainFrameLayout.setHorizontalGroup(
@@ -81,9 +87,11 @@ public class SuccessFrame extends javax.swing.JFrame {
                             .addComponent(nameLabel)
                             .addComponent(ageLabel)
                             .addComponent(emailLabel)
-                            .addComponent(messageLabel))
+                            .addComponent(messageLabel)
+                            .addComponent(messageLabel1))
                         .addGap(25, 25, 25)
                         .addGroup(mainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(imageValue)
                             .addComponent(messageValue)
                             .addComponent(emailValue)
                             .addComponent(ageValue)
@@ -118,7 +126,11 @@ public class SuccessFrame extends javax.swing.JFrame {
                 .addGroup(mainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(messageLabel)
                     .addComponent(messageValue))
-                .addContainerGap(358, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(mainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(messageLabel1)
+                    .addComponent(imageValue))
+                .addContainerGap(329, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -172,12 +184,13 @@ public class SuccessFrame extends javax.swing.JFrame {
     
     
     
-    public void setLabelValues(String firstName, String lastName, String age, String email, String message) {
+    public void setLabelValues(String firstName, String lastName, String age, String email, String message, ImageIcon icon) {
         ageValue.setText(age);
         firstNameValue.setText(firstName);
         lastNameValue.setText(lastName); 
         emailValue.setText(email);
         messageValue.setText(message);
+        imageValue.setIcon(icon);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -186,9 +199,11 @@ public class SuccessFrame extends javax.swing.JFrame {
     private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel emailValue;
     private javax.swing.JLabel firstNameValue;
+    private javax.swing.JLabel imageValue;
     private javax.swing.JLabel lastNameValue;
     private javax.swing.JPanel mainFrame;
     private javax.swing.JLabel messageLabel;
+    private javax.swing.JLabel messageLabel1;
     private javax.swing.JLabel messageValue;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel titleLabel;

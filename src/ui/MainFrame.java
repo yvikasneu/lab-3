@@ -4,8 +4,15 @@
  */
 package ui;
 
+import java.awt.Dimension;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -19,6 +26,13 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
+    
+    JFileChooser chooser;
+    BufferedImage img;
+    String filename;
+    File file ; 
+
+    
     public MainFrame() {
         initComponents();
     }
@@ -46,11 +60,15 @@ public class MainFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         messageInput = new javax.swing.JTextArea();
         submitButton = new javax.swing.JButton();
+        imageButton = new javax.swing.JButton();
+        imageLabel = new javax.swing.JLabel();
+        targetImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(700, 550));
 
         mainPanel.setBackground(new java.awt.Color(253, 206, 68));
+        mainPanel.setPreferredSize(new java.awt.Dimension(700, 600));
 
         titleLabel.setFont(new java.awt.Font("Malayalam MN", 1, 24)); // NOI18N
         titleLabel.setText("Customer Registration Form");
@@ -78,32 +96,21 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        imageButton.setText("Choose Image");
+        imageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imageButtonActionPerformed(evt);
+            }
+        });
+
+        imageLabel.setText("Select Profile Image");
+
+        targetImage.setText("No Image Selected");
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(messageLabel)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(firstNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(firstNameLabel)
-                                    .addComponent(ageInput, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ageLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lastNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lastNameLabel)
-                                    .addComponent(emailInput, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(emailLabel))))
-                        .addGap(68, 68, 68))))
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
@@ -113,6 +120,36 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGap(241, 241, 241)
                         .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(firstNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(firstNameLabel)
+                                    .addComponent(ageInput, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ageLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lastNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lastNameLabel)
+                                    .addComponent(emailInput, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(emailLabel))))
+                        .addGap(68, 68, 68))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addComponent(messageLabel)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(imageLabel)
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addComponent(imageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(targetImage)))
+                        .addGap(0, 263, Short.MAX_VALUE))))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,7 +180,13 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(messageLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
+                .addComponent(imageLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(imageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(targetImage))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
@@ -173,7 +216,12 @@ public class MainFrame extends javax.swing.JFrame {
         Pattern pattern = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
         Matcher isValidEmail = pattern.matcher(email);
         
-        if(firstName.length() == 0) {
+        try {
+           img=ImageIO.read(file);
+           ImageIcon icon = new ImageIcon(img); // ADDED
+           
+           
+           if(firstName.length() == 0) {
             JOptionPane.showMessageDialog(this, "Please enter a valid First Name", "Validation Error", HEIGHT);
         }else if (lastName.length() == 0) {
             JOptionPane.showMessageDialog(this, "Please enter a valid Last Name", "Validation Error", HEIGHT);
@@ -191,10 +239,19 @@ public class MainFrame extends javax.swing.JFrame {
 //            this.add(successPannel);       
 //             JOptionPane.showMessageDialog(this, firstName + " " + lastName + " " + age + " " + email + " " + message, "Registeration Form", HEIGHT);
             SuccessFrame f = new SuccessFrame(); 
-            f.setLabelValues(firstName, lastName, age, email, message);
+            f.setLabelValues(firstName, lastName, age, email, message, icon);
             this.setVisible(false);
             f.setVisible(true);
+            
         }
+                        
+        }
+        catch(IOException e1) {
+        }
+        
+        
+        
+        
        
         
         
@@ -202,6 +259,30 @@ public class MainFrame extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_submitButtonActionPerformed
+
+    private void imageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageButtonActionPerformed
+        // TODO add your handling code here:
+        chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        file = chooser.getSelectedFile();
+        
+        try {
+            img=ImageIO.read(file);
+            ImageIcon icon = new ImageIcon(img); // ADDED
+            targetImage.setIcon(icon);
+            targetImage.setText("");
+
+            targetImage.setPreferredSize(new Dimension(icon.getIconWidth(),icon.getIconHeight())); // ADDED
+
+            targetImage.revalidate(); // ADDED
+            targetImage.repaint(); // ADDED
+                        
+        }
+        catch(IOException e1) {
+        }
+                
+
+    }//GEN-LAST:event_imageButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,6 +326,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel emailLabel;
     private javax.swing.JTextField firstNameInput;
     private javax.swing.JLabel firstNameLabel;
+    private javax.swing.JButton imageButton;
+    private javax.swing.JLabel imageLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField lastNameInput;
     private javax.swing.JLabel lastNameLabel;
@@ -252,6 +335,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea messageInput;
     private javax.swing.JLabel messageLabel;
     private javax.swing.JButton submitButton;
+    private javax.swing.JLabel targetImage;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }
