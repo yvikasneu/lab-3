@@ -5,17 +5,24 @@
 package ui;
 
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -46,6 +53,7 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        sDialog = new javax.swing.JDialog();
         mainPanel = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
         firstNameLabel = new javax.swing.JLabel();
@@ -63,6 +71,17 @@ public class MainFrame extends javax.swing.JFrame {
         imageButton = new javax.swing.JButton();
         imageLabel = new javax.swing.JLabel();
         targetImage = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout sDialogLayout = new javax.swing.GroupLayout(sDialog.getContentPane());
+        sDialog.getContentPane().setLayout(sDialogLayout);
+        sDialogLayout.setHorizontalGroup(
+            sDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        sDialogLayout.setVerticalGroup(
+            sDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(700, 550));
@@ -239,10 +258,32 @@ public class MainFrame extends javax.swing.JFrame {
             try {
             img=ImageIO.read(file);
             ImageIcon icon = new ImageIcon(img); // ADDED
-            SuccessFrame f = new SuccessFrame(); 
-            f.setLabelValues(firstName, lastName, age, email, message, icon);
-            this.setVisible(false);
-            f.setVisible(true);
+            JDialog d5 = new JDialog(this);
+            JPanel successPanel = new JPanel();
+            successPanel.setPreferredSize(new Dimension(400, 400));
+            successPanel.setLayout(new BoxLayout(successPanel, BoxLayout.Y_AXIS));
+            JLabel nameL = new JLabel("Name : " + firstName + " " + lastName);             
+            JLabel ageL = new JLabel("Age : " + age);             
+            JLabel emailL = new JLabel("Email : " + email);             
+            JLabel messageL = new JLabel("Message : " + message); 
+            JLabel imageL = new JLabel("Image:"); 
+            imageL.setHorizontalTextPosition(SwingConstants.LEFT);
+            imageL.setIcon(icon);
+
+
+            
+            successPanel.add(nameL);            
+            successPanel.add(ageL);
+            successPanel.add(emailL);
+            successPanel.add(messageL);
+            successPanel.add(imageL);
+
+            d5.getContentPane().add(successPanel);
+            d5.pack();
+            
+            d5.setVisible(true);
+            
+
             }  catch(IOException e2){}
             
         }
@@ -334,6 +375,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel mainPanel;
     private javax.swing.JTextArea messageInput;
     private javax.swing.JLabel messageLabel;
+    private javax.swing.JDialog sDialog;
     private javax.swing.JButton submitButton;
     private javax.swing.JLabel targetImage;
     private javax.swing.JLabel titleLabel;
